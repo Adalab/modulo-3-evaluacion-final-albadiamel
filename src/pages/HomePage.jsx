@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import getCharacters from '../services/api';
 
 const HomePage = () => {
@@ -21,7 +22,10 @@ const HomePage = () => {
     }
 
     const getHouses = () => {
-        const houses = characters.map(character => character.house);
+        const houses = characters.map(character => character.house)
+        .filter(house => {
+            return house ? true : false;
+        });
         const uniqueHouses = new Set(houses);
         const uniqueArray =[...uniqueHouses];
         return uniqueArray;
@@ -62,12 +66,14 @@ const HomePage = () => {
                     .map(character => {
                         return (
                             <li key={character.id}>
-                                <img 
-                                    src={character.image || "https://placehold.co/600x400?text=HarryPotter"}
-                                    alt={character.name}
-                                />
-                                <p>{character.name}</p>
-                                <p>{character.species}</p>
+                                <Link to={`/character/${character.id}`}>
+                                    <img 
+                                        src={character.image || "https://placehold.co/600x400?text=HarryPotter"}
+                                        alt={character.name}
+                                    />
+                                    <p>{character.name}</p>
+                                    <p>{character.species}</p>
+                                </Link>
                             </li>
                         )
                     })}
