@@ -4,6 +4,8 @@ import ls from "../services/localStorage";
 import getCharacters from '../services/api';
 import Filters from '../components/Filters';
 import CharacterList from '../components/CharacterList';
+import Header from '../components/Header';
+import '../styles/Header.css';
 
 
 const HomePage = () => {
@@ -40,6 +42,8 @@ const HomePage = () => {
 
     return (
         <>
+            <Header />
+
             <section>
                 <Filters 
                     updateName={updateName}

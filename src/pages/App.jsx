@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage from './HomePage';
 import DetailPage from './DetailPage';
 import NotFoundPage from './NotFoundPage';
-import '../styles/app.css'
 
 const App = () => {
 

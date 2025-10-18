@@ -1,0 +1,14 @@
+.header {
+  text-align: center;
+  padding: 32px 0 48px 0;
+  border-bottom: 3px solid #8b7355;
+  margin-bottom: 48px;
+}
+
+.header-logo {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}

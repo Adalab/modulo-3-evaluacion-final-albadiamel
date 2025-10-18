@@ -1,14 +1,14 @@
 import 'react';
 import { Link } from 'react-router-dom';
 import CharacterCard from './CharacterCard';
+import '../styles/CharacterList.css';
 
-
-const CharacterList = ({ characters, name, house, }) => {
-
+const CharacterList = ({ characters, name, house }) => {
+    
     return (
-        <ul>
+        <ul className="character-list">
             {characters
-            .filter(character => character.name.toLowerCase().includes(name.toLocaleLowerCase()))
+            .filter(character => character.name.toLowerCase().includes(name.toLowerCase()))
             .filter(character => {
                 if (house === "") {
                     return true;
@@ -20,9 +20,8 @@ const CharacterList = ({ characters, name, house, }) => {
                 return (
                     <li key={character.id}>
                         <Link to={`/character/${character.id}`}>
-                        <CharacterCard 
-                        character={character}
-                        />
+                            <CharacterCard 
+                            character={character} />
                         </Link>
                     </li>
                 )

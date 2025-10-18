@@ -2,6 +2,8 @@ import 'react';
 import { useParams } from 'react-router-dom';
 import ls from "../services/localStorage";
 import CharacterDetail from '../components/CharacterDetail';
+import Header from '../components/Header';
+
 
 
 const DetailPage = () => {
@@ -10,9 +12,12 @@ const DetailPage = () => {
     const character = characters.find(character => character.id === id);
 
     return (
-        <CharacterDetail 
-        character={character}
-        />
+        <>
+            <Header />
+            <CharacterDetail 
+            character={character}
+            />
+        </>
     )
 }
 
