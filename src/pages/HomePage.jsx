@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ls from "../services/localStorage";
 import getCharacters from '../services/api';
 import Filters from '../components/Filters';
+import CharacterList from '../components/CharacterList';
 
 
 const HomePage = () => {
@@ -39,40 +40,22 @@ const HomePage = () => {
 
     return (
         <>
-            <Filters 
-                updateName={updateName}
-                updateHouse={updateHouse}
-                name={name}
-                house={house}
-                uniqueHouses={getHouses()}
-            />
+            <section>
+                <Filters 
+                    updateName={updateName}
+                    updateHouse={updateHouse}
+                    name={name}
+                    house={house}
+                    uniqueHouses={getHouses()}
+                />
+            </section>
 
             <section>
-                <ul>
-                    {characters
-                    .filter(character => character.name.toLowerCase().includes(name.toLocaleLowerCase()))
-                    .filter(character => {
-                        if (house === "") {
-                            return true;
-                        } else {
-                            return house === character.house;
-                        }
-                    })
-                    .map(character => {
-                        return (
-                            <li key={character.id}>
-                                <Link to={`/character/${character.id}`}>
-                                    <img 
-                                        src={character.image || "https://placehold.co/600x400?text=HarryPotter"}
-                                        alt={character.name}
-                                    />
-                                    <p>{character.name}</p>
-                                    <p>{character.species}</p>
-                                </Link>
-                            </li>
-                        )
-                    })}
-                </ul>
+                <CharacterList 
+                characters={characters}
+                name={name}
+                house={house}
+                />
             </section>
         </>
     )
