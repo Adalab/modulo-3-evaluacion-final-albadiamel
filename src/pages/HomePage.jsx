@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import ls from "../services/localStorage";
 import getCharacters from '../services/api';
 
 const HomePage = () => {
@@ -10,6 +11,7 @@ const HomePage = () => {
     useEffect(() => {
         getCharacters().then(data => {
             setCharacters(data);
+            ls.set("characters", data);
         })
     }, []);
 
