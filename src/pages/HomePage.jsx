@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ls from "../services/localStorage";
 import getCharacters from '../services/api';
+import Filters from '../components/Filters';
+
 
 const HomePage = () => {
     const [name, setName] = useState("");
@@ -15,12 +17,12 @@ const HomePage = () => {
         })
     }, []);
 
-    const handleChangeName = (ev) => {
-        setName(ev.target.value);
+    const updateName = (value) => {
+        setName(value);
     }
 
-    const handleChangeHouse = (ev) => {
-        setHouse(ev.target.value);
+    const updateHouse = (value) => {
+        setHouse(value);
     }
 
     const getHouses = () => {
@@ -37,22 +39,13 @@ const HomePage = () => {
 
     return (
         <>
-            <section>
-                <label htmlFor="name">Busca por personaje:</label>
-                <input  name="name" id="name" value={name} onChange={handleChangeName}/>
-
-                <label htmlFor="house">
-                    Selecciona la casa:
-                    <select name="house" id="house" value={house} onChange={handleChangeHouse}>
-                        <option value="">Todas</option>
-                        {getHouses().map((house, index) => {
-                            return (
-                                <option key={index} value={house}>{house}</option>
-                            )
-                        })}
-                    </select>
-                </label>
-            </section>
+            <Filters 
+                updateName={updateName}
+                updateHouse={updateHouse}
+                name={name}
+                house={house}
+                uniqueHouses={getHouses()}
+            />
 
             <section>
                 <ul>
