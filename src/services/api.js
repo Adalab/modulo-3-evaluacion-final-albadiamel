@@ -10,7 +10,8 @@ const getCharacters = () => {
                     name: character.name,
                     species: character.species,
                     house: character.house,
-                    alive: character.alive
+                    alive: character.alive,
+                    gender: character.gender
                 }
             })
             console.log(characterData)
